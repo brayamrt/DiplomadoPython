@@ -1,2 +1,2 @@
-# DiplomadoPython
-Recursos del diplomado de Machine Learning
+# DiplomadoMLA2023
+Repositorio para compartir códigos de Python sobre Machine Learning
