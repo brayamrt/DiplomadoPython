@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Spam en Youtube</title>
+</head>
+<body>
+    <form action="/prediccion/" method="post">
+        {% csrf_token %}
+        <h3>Esta es una aplicación Django que incluye una red neuronal con Tensorflow</h3>
+        
+        <p>&nbsp;</p>
+        <button type="submit">Predecir</button>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Mensaje</th>
+                    <th>Porcentaje</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for fila in prediccion %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        {% if fila.0 >= 0.80 %}
+                            <td style="color: red"><strong>Spam</strong></td>
+                        {% elif fila.0 < 0.80 %}
+                            <td style="color: green"><strong>No Spam</strong></td>
+                        {% endif %}
+
+                        <td>{{ fila.0 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+    
+</body>
+</html>
